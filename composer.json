@@ -1,0 +1,16 @@
+{
+    "name": "hirenchhatbar/api-platform",
+    "description": "Firebase alternative",
+    "autoload": {
+        "psr-4": {
+            "Hiren\\ApiPlatform\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hiren Chhatbar",
+            "email": "hc.rajkot@gmail.com"
+        }
+    ],
+    "require": {}
+}
