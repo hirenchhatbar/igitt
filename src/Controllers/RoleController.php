@@ -11,7 +11,7 @@ class RoleController extends Controller
 {
     public function getCollection(Request $request): JsonResponse
     {
-        $collection = Role::getCollection($request->query());
+        $collection = Role::getCollection($request->query('page_params'), $request->query('filter', []), $request->query('sort_params', []));
 
         return response()->json($collection);
     }

@@ -11,21 +11,23 @@ class Role extends Model
      */
     public $timestamps = true;
 
-    public static function getCollection(array $filters = [])
+    public static function getCollection(array $page, array $filter = [], array $sort = [])
     {
         $query = self::query();
 
-        if (isset($filters['name'])) {
-            $query->where('name', 'like', '%' . $filters['name'] . '%');
+        if (isset($filter['name'])) {
+            $query->where('name', 'like', '%' . $filter['name'] . '%');
         }
 
-        if (isset($filters['status'])) {
-            $query->where('status', '=', $filters['status']);
+        if (isset($filter['status'])) {
+            $query->where('status', '=', $filter['status']);
         }
 
-        $query->orderBy('ord', 'ASC');
+        foreach ($sort as $sortField => $sortDirection) {
+            $query->orderBy($sortField, $sortDirection);
+        }
 
-        $query->paginate(perPage: 2, page: 1);
+        $query->paginate(perPage: $page['per_page'], page: $page['page']);
 
         return $query->get();
     }
