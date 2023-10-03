@@ -1,9 +1,9 @@
 {
-    "name": "hirenchhatbar/api-platform",
+    "name": "hirenchhatbar/igitt",
     "description": "Firebase alternative",
     "autoload": {
         "psr-4": {
-            "Hiren\\ApiPlatform\\": "src/"
+            "Hiren\\Igitt\\": "src/"
         }
     },
     "authors": [

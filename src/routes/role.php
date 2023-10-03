@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Hiren\ApiPlatform\Controllers\RoleController;
+use Hiren\Igitt\Controllers\RoleController;
 
 Route::controller(RoleController::class)->group(function () {
     Route::prefix('roles')->group(function () {

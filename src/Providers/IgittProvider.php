@@ -1,17 +1,17 @@
 <?php
 
-namespace Hiren\ApiPlatform\Providers;
+namespace Hiren\Igitt\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class ApiPlatformProvider extends ServiceProvider
+class IgittProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/role.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'api-platform');
