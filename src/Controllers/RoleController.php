@@ -54,9 +54,7 @@ class RoleController extends Controller implements CrudControllerInterface
     public function delete(int $id): JsonResponse
     {
         try {
-            $role = Role::findOrFail($id);
-
-            $role->delete();
+            Role::deleteById($id);
 
             return response()->json();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

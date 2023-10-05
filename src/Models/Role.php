@@ -51,4 +51,14 @@ class Role extends Model implements CrudModelInterface
 
         return $role;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public static function deleteById(int $id): void
+    {
+        $role = static::findOrFail($id);
+
+        $role->delete();
+    }
 }

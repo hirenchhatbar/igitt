@@ -32,4 +32,14 @@ interface CrudModelInterface
      * @return static an instance of the class that the function is defined in.
      */
     public static function post(array $data): static;
+
+    /**
+     * The function deletes a record from the database based on the provided ID.
+     *
+     * @param int id The id parameter is an integer that represents the unique identifier of the entity
+     * that needs to be deleted.
+     *
+     * @return void
+     */
+    public static function deleteById(int $id): void;
 }
