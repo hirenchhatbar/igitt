@@ -1,13 +1,23 @@
 <?php
 namespace Hiren\Igitt\Controllers;
 
-use App\Http\Controllers\Controller;
 use Hiren\Igitt\Models\Role;
+use Hiren\Igitt\Validators\RolePostValidator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller implements CrudControllerInterface
+class RoleController extends AbstractCrudController
 {
+    /**
+     * Constructor
+     *
+     * @param RolePostValidator $rolePostValidator
+     */
+    public function __construct(protected RolePostValidator $rolePostValidator)
+    {
+
+    }
+
     /**
      * @inheritDoc
      */
@@ -30,9 +40,14 @@ class RoleController extends Controller implements CrudControllerInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function post(Request $request): JsonResponse
     {
         try {
+            $this->validate($request, $this->rolePostValidator->rules());
+
             if ($role = Role::post($request->request->all())) {
                 return response()->json(['id' => $role->id], 201);
             }

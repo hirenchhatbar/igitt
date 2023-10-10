@@ -29,6 +29,17 @@ interface CrudControllerInterface
      */
     public function get(int $id): JsonResponse;
 
+    /**
+     * The function handles the POST request for creating a new entity in a PHP application,
+     * validating the request data and returning a JSON response with the created entity's ID.
+     *
+     * @param Request request The `` parameter is an instance of the `Illuminate\Http\Request`
+     * class. It represents an incoming HTTP request and contains information such as the request
+     * method, headers, and payload.
+     *
+     * @return JsonResponse If the validation passes and a new entity is successfully created, a JSON
+     * response with the entity's ID and a status code of 201 (Created) is returned.
+     */
     public function post(Request $request): JsonResponse;
 
     public function put(Request $request, int $id): JsonResponse;
