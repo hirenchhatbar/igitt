@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Igitt package.
+ *
+ * (c) Hiren Chhatbar <hc.rajkot@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Hiren\Igitt\Controllers;
 
@@ -7,6 +15,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 
+/**
+ * AbstractCrudController class
+ *
+ * @author Hiren Chhatbar <hc.rajkot@gmail.com>
+ */
 abstract class AbstractCrudController extends Controller implements CrudControllerInterface
 {
     use ValidatesRequests;

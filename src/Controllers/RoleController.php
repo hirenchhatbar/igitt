@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of the Igitt package.
+ *
+ * (c) Hiren Chhatbar <hc.rajkot@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Hiren\Igitt\Controllers;
 
 use Hiren\Igitt\Models\Role;
@@ -7,6 +16,11 @@ use Hiren\Igitt\Validators\RolePutValidator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * RoleController class
+ *
+ * @author Hiren Chhatbar <hc.rajkot@gmail.com>
+ */
 class RoleController extends AbstractCrudController
 {
     /**
