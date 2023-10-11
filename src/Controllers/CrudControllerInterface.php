@@ -42,6 +42,20 @@ interface CrudControllerInterface
      */
     public function post(Request $request): JsonResponse;
 
+    /**
+    * The function takes a PUT request and updates a entity with the given ID, returning a JSON response
+    * with the updated entity's ID if successful.
+    *
+    * @param Request request The `` parameter is an instance of the `Request` class, which
+    * represents an HTTP request made to the server. It contains information about the request, such
+    * as the request method, headers, and request data.
+    * @param int id The `id` parameter is an integer that represents the ID of the entity that needs to
+    * be updated.
+    *
+    * @return JsonResponse If the validation passes and the entity is successfully updated, a JSON
+    * response with the entity's ID is returned with a status code of 200. If a unique constraint
+    * violation occurs, a JSON response with a status code of 409 is returned.
+    */
     public function put(Request $request, int $id): JsonResponse;
 
     /**

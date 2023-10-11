@@ -3,6 +3,7 @@ namespace Hiren\Igitt\Controllers;
 
 use Hiren\Igitt\Models\Role;
 use Hiren\Igitt\Validators\RolePostValidator;
+use Hiren\Igitt\Validators\RolePutValidator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,12 @@ class RoleController extends AbstractCrudController
      * Constructor
      *
      * @param RolePostValidator $rolePostValidator
+     * @param RolePutValidator $rolePutValidator
      */
-    public function __construct(protected RolePostValidator $rolePostValidator)
+    public function __construct(
+        protected RolePostValidator $rolePostValidator,
+        protected RolePutValidator $rolePutValidator,
+    )
     {
 
     }
@@ -56,11 +61,20 @@ class RoleController extends AbstractCrudController
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function put(Request $request, int $id): JsonResponse
     {
-        $user = ['user' => 'Peter Parker'];
+        try {
+            $this->validate($request, $this->rolePutValidator->setId($id)->rules());
 
-        return response()->json($user);
+            if ($role = Role::put($id, $request->request->all())) {
+                return response()->json(['id' => $role->id], 200);
+            }
+        } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
+            return response()->json(status: 409);
+        }
     }
 
     /**

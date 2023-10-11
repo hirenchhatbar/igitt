@@ -34,6 +34,18 @@ interface CrudModelInterface
     public static function post(array $data): static;
 
     /**
+     * The function updates the name, ord, and status of a role and saves the changes.
+     *
+     * @param int id The `id` parameter is an integer that represents the unique identifier of the role
+     * that needs to be updated.
+     * @param array data The `` parameter is an array that contains the updated values for the
+     * role. It should have the following keys:
+     *
+     * @return static an instance of the class that the function belongs to.
+     */
+    public static function put(int $id, array $data): static;
+
+    /**
      * The function deletes a record from the database based on the provided ID.
      *
      * @param int id The id parameter is an integer that represents the unique identifier of the entity

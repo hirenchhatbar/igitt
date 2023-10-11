@@ -2,12 +2,15 @@
 
 namespace Hiren\Igitt\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 
 abstract class AbstractCrudController extends Controller implements CrudControllerInterface
 {
+    use ValidatesRequests;
+
     /**
      * @inheritDoc
      */

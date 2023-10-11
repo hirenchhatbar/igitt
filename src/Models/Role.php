@@ -55,6 +55,22 @@ class Role extends Model implements CrudModelInterface
     /**
      * @inheritDoc
      */
+    public static function put(int $id, array $data): static
+    {
+        $role = self::find($id);
+
+        $role->name = $data['name'];
+        $role->ord = $data['ord'];
+        $role->status = $data['status'];
+
+        $role->save();
+
+        return $role;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public static function deleteById(int $id): void
     {
         $role = static::findOrFail($id);
