@@ -32,6 +32,7 @@ class RoleController extends AbstractCrudController
     public function __construct(
         protected RolePostValidator $rolePostValidator,
         protected RolePutValidator $rolePutValidator,
+        protected Role $roleModel,
     )
     {
 
@@ -42,7 +43,7 @@ class RoleController extends AbstractCrudController
      */
     public function getCollection(Request $request): JsonResponse
     {
-        $collection = Role::getCollection($request->query('page_params'), $request->query('filter', []), $request->query('sort_params', []));
+        $collection = $this->roleModel->getCollection($request->query('page_params'), $request->query('filter', []), $request->query('sort_params', []));
 
         return response()->json($collection);
     }
@@ -53,7 +54,7 @@ class RoleController extends AbstractCrudController
     public function get(int $id): JsonResponse
     {
         try {
-            return response()->json(Role::findOrFail($id));
+            return response()->json($this->roleModel->query()->findOrFail($id));
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(status: 404);
         }
@@ -67,7 +68,7 @@ class RoleController extends AbstractCrudController
         try {
             $this->validate($request, $this->rolePostValidator->rules());
 
-            if ($role = Role::post($request->request->all())) {
+            if ($role = $this->roleModel->post($request->request->all())) {
                 return response()->json(['id' => $role->id], 201);
             }
         } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
@@ -83,7 +84,7 @@ class RoleController extends AbstractCrudController
         try {
             $this->validate($request, $this->rolePutValidator->setId($id)->rules());
 
-            if ($role = Role::put($id, $request->request->all())) {
+            if ($role = $this->roleModel->put($id, $request->request->all())) {
                 return response()->json(['id' => $role->id], 200);
             }
         } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
@@ -97,7 +98,7 @@ class RoleController extends AbstractCrudController
     public function delete(int $id): JsonResponse
     {
         try {
-            Role::deleteById($id);
+            $this->roleModel->deleteById($id);
 
             return response()->json();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

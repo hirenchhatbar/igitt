@@ -27,9 +27,9 @@ class Role extends Model implements CrudModelInterface
     /**
      * @inheritDoc
      */
-    public static function getCollection(array $page, array $filter = [], array $sort = [])
+    public function getCollection(array $page, array $filter = [], array $sort = [])
     {
-        $query = self::query();
+        $query = $this->newQuery();
 
         if (isset($filter['name'])) {
             $query->where('name', 'like', '%' . $filter['name'] . '%');
@@ -51,9 +51,9 @@ class Role extends Model implements CrudModelInterface
     /**
      * @inheritDoc
      */
-    public static function post(array $data): static
+    public function post(array $data): self
     {
-        $role = (new static)->newInstance();
+        $role = $this->newInstance();
 
         $role->name = $data['name'];
         $role->code = \str_replace(' ', '_', \strtoupper($data['name']));
@@ -68,9 +68,11 @@ class Role extends Model implements CrudModelInterface
     /**
      * @inheritDoc
      */
-    public static function put(int $id, array $data): static
+    public function put(int $id, array $data): self
     {
-        $role = self::find($id);
+        $query = $this->newQuery();
+
+        $role = $query->findOrFail($id);
 
         $role->name = $data['name'];
         $role->ord = $data['ord'];
@@ -84,9 +86,11 @@ class Role extends Model implements CrudModelInterface
     /**
      * @inheritDoc
      */
-    public static function deleteById(int $id): void
+    public function deleteById(int $id): void
     {
-        $role = static::findOrFail($id);
+        $query = $this->newQuery();
+
+        $role = $query->findOrFail($id);
 
         $role->delete();
     }

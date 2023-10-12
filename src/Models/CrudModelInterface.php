@@ -32,7 +32,7 @@ interface CrudModelInterface
      *
      * @return a collection of records from the database that match the given filter and sort criteria.
      */
-    public static function getCollection(array $page, array $filter = [], array $sort = []);
+    public function getCollection(array $page, array $filter = [], array $sort = []);
 
 
     /**
@@ -42,9 +42,9 @@ interface CrudModelInterface
      * @param array data An array containing the data for creating a new entity. The array should have
      * the following keys:
      *
-     * @return static an instance of the class that the function is defined in.
+     * @return self an instance of the class that the function is defined in.
      */
-    public static function post(array $data): static;
+    public function post(array $data): self;
 
     /**
      * The function updates the name, ord, and status of a role and saves the changes.
@@ -54,9 +54,9 @@ interface CrudModelInterface
      * @param array data The `` parameter is an array that contains the updated values for the
      * role. It should have the following keys:
      *
-     * @return static an instance of the class that the function belongs to.
+     * @return self an instance of the class that the function belongs to.
      */
-    public static function put(int $id, array $data): static;
+    public function put(int $id, array $data): self;
 
     /**
      * The function deletes a record from the database based on the provided ID.
@@ -66,5 +66,5 @@ interface CrudModelInterface
      *
      * @return void
      */
-    public static function deleteById(int $id): void;
+    public function deleteById(int $id): void;
 }
