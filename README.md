@@ -2,4 +2,8 @@
 
 # Igitt (beta)
 
-https://jsonapi.org/format/#fetching-pagination
+Built on [JSON:API](https://jsonapi.org) specifications
+
+- [Sorting](https://jsonapi.org/format/#fetching-sorting)
+- [Pagination](https://jsonapi.org/format/#fetching-pagination)
+- [Filtering](https://jsonapi.org/format/#fetching-filtering)
