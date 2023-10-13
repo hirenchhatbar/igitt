@@ -2,8 +2,21 @@
 
 # Igitt (beta)
 
+## Installation
+
+Follow installation steps of [igitt-api](https://github.com/hirenchhatbar/igitt-api#installation)
+
+## Specification
+
 Built on [JSON:API](https://jsonapi.org) specifications
 
 - [Sorting](https://jsonapi.org/format/#fetching-sorting)
 - [Pagination](https://jsonapi.org/format/#fetching-pagination)
 - [Filtering](https://jsonapi.org/format/#fetching-filtering)
+
+## Development Tools
+
+- VSCode
+- Postman
+- MySQL Workbench
+- Bash
