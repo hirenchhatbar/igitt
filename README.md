@@ -20,3 +20,4 @@ Built on [JSON:API](https://jsonapi.org) specifications
 - Postman
 - MySQL Workbench
 - Bash
+- ChatGPT
