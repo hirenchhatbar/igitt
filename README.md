@@ -14,6 +14,10 @@ Built on [JSON:API](https://jsonapi.org) specifications
 - [Pagination](https://jsonapi.org/format/#fetching-pagination)
 - [Filtering](https://jsonapi.org/format/#fetching-filtering)
 
+## How to override everything?
+
+[Click here](docs/OVERRIDE.md)
+
 ## Development Tools
 
 - VSCode
